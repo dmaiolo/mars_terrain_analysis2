@@ -95,13 +95,13 @@ for 10 epochs with a batch size of 2.
 To integrate the model into the Raspberry Pi / Car Kit, follow these steps:
 
 1. Convert the h5 file into a format suitable for TensorFlow Lite. This conversion will reduce the model size and make it compatible with the Raspberry Pi.
-  ```tflite_convert --keras_model_file model.h5 --output_file model.tflite```
+```tflite_convert --keras_model_file model.h5 --output_file model.tflite```
 2. Transfer the model.tflite file to the Raspberry Pi.
 3. Install TensorFlow Lite for Python on the Raspberry Pi:
-  ```pip3 install tflite-runtime```
+```pip3 install tflite-runtime```
 4. Install the Freenove car kit's required libraries, if not already installed:
-  ```pip3 install RPi.GPIO```
-  ```pip3 install smbus2```
+```pip3 install RPi.GPIO```
+```pip3 install smbus2```
 5. Write a Python script on the Raspberry Pi to load the model.tflite file, preprocess the input images from the car kit's camera, and run inference using the TensorFlow Lite interpreter. Additionally, integrate the Freenove car kit's control code to control the car's motors based on the detected terrain feature.
 
 ## Structure of the h5 File
@@ -119,13 +119,13 @@ configuration. The file has the following structure:
 To run the project, follow these steps:
 
 1. Clone the repository to your local machine:
-  git clone https://github.com/dmaiolo/mars_terrain_analysis2.git
+```git clone https://github.com/dmaiolo/mars_terrain_analysis2.git```
 2. Change into the project directory:
-  cd mars_terrain_analysis2
+```cd mars_terrain_analysis2```
 3. Install the required Python packages:
-  pip install -r requirements.txt
+```pip install -r requirements.txt```
 4. Run the main script:
-  python main.py
+```python main.py```
 
 Upon running the script, the images and masks will be loaded, preprocessed, and divided into training and validation sets. 
 The model will then be trained and validated using the provided dataset. The training progress, along with the loss and 
