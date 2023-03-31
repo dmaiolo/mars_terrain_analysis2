@@ -1,3 +1,14 @@
+# -------------------------------------------------------------------------------
+# data_loader.py
+# -------------------------------------------------------------------------------
+#
+# Author: David Maiolo
+# Date: 03/30/2023
+#
+# This file contains functions for loading and preprocessing the Mars terrain
+# dataset. It includes functions to load images and masks, split the data into
+# training, validation, and test sets, and apply necessary preprocessing.
+
 import os
 import cv2
 import numpy as np
