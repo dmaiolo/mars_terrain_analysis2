@@ -7,9 +7,7 @@ you can contact me through my GitHub profile or the repository's issue tracker.
 
 # Mars Terrain Analysis
 
-This project, created by David Maiolo on March 30, 2023, is designed to analyze the terrain of Mars by processing images 
-and their corresponding masks. The project uses a Convolutional Neural Network (CNN) model to identify and classify 
-different geological formations on the Martian surface.
+This project is designed to analyze the terrain of Mars by processing images and their corresponding masks. The project uses a Convolutional Neural Network (CNN) model to identify and classify different geological formations on the Martian surface.
 
 ## Project Structure
 
