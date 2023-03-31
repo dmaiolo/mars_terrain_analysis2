@@ -1,3 +1,14 @@
+# -------------------------------------------------------------------------------
+# main.py
+# -------------------------------------------------------------------------------
+#
+# Author: David Maiolo
+# Date: 03/30/2023
+#
+# This file serves as the main entry point for the Mars Terrain Analysis project.
+# It orchestrates the entire pipeline, from loading data, training the model,
+# and evaluating its performance, to visualizing results.
+
 import numpy as np
 import tensorflow as tf
 from model import create_model
