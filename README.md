@@ -34,11 +34,11 @@ The dataset is divided into training and validation sets using an 80-20 split.
 The model uses the RGB key to interpret and assign labels to the terrain features in the Mars images based on their 
 pixel values. The RGB key is as follows:
 
-0,0,0 - soil
-1,1,1 - bedrock
-2,2,2 - sand
-3,3,3 - big rock
-255,255,255 - NULL (no label)
+- 0,0,0 - soil
+- 1,1,1 - bedrock
+- 2,2,2 - sand
+- 3,3,3 - big rock
+- 255,255,255 - NULL (no label)
 
 The program reads an RGB image, applies the masks (rover and range-30m), and replaces the pixel values according to the 
 RGB key. This process helps to convert the original image into a labeled image that indicates different types of terrain 
@@ -95,24 +95,24 @@ for 10 epochs with a batch size of 2.
 To integrate the model into the Raspberry Pi / Car Kit, follow these steps:
 
 1. Convert the h5 file into a format suitable for TensorFlow Lite. This conversion will reduce the model size and make it compatible with the Raspberry Pi.
-  tflite_convert --keras_model_file model.h5 --output_file model.tflite
+  ```tflite_convert --keras_model_file model.h5 --output_file model.tflite```
 2. Transfer the model.tflite file to the Raspberry Pi.
 3. Install TensorFlow Lite for Python on the Raspberry Pi:
-  pip3 install tflite-runtime
+  ```pip3 install tflite-runtime```
 4. Install the Freenove car kit's required libraries, if not already installed:
-  pip3 install RPi.GPIO
-  pip3 install smbus2
+  ```pip3 install RPi.GPIO```
+  ```pip3 install smbus2```
 5. Write a Python script on the Raspberry Pi to load the model.tflite file, preprocess the input images from the car kit's camera, and run inference using the TensorFlow Lite interpreter. Additionally, integrate the Freenove car kit's control code to control the car's motors based on the detected terrain feature.
 
 ## Structure of the h5 File
 The h5 file is a Hierarchical Data Format (HDF5) file that contains the trained model's architecture, weights, and training 
 configuration. The file has the following structure:
 
-* model_config: A JSON object that describes the model's architecture
-* optimizer_config: A JSON object that contains the optimizer configuration used during training
-* layer_names: A list of layer names in the model
-* layer_weights: A group containing the weight values for each layer
-* training_config: A JSON object that contains information about the training process, such as the loss function, metrics, and batch size
+- model_config: A JSON object that describes the model's architecture
+- optimizer_config: A JSON object that contains the optimizer configuration used during training
+- layer_names: A list of layer names in the model
+- layer_weights: A group containing the weight values for each layer
+- training_config: A JSON object that contains information about the training process, such as the loss function, metrics, and batch size
 
 ## Usage
 
