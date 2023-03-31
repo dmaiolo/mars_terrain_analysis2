@@ -1,5 +1,15 @@
-import tensorflow as tf
+# -------------------------------------------------------------------------------
+# model.py
+# -------------------------------------------------------------------------------
+#
+# Author: David Maiolo
+# Date: 03/30/2023
+#
+# This file contains the implementation of the machine learning model for the
+# Mars Terrain Analysis project. It includes functions to create, compile,
+# train, and evaluate the model.
 
+import tensorflow as tf
 
 def create_model(input_shape):
     model = tf.keras.Sequential([
