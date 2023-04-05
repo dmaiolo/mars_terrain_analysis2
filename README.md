@@ -2,8 +2,7 @@
 
 David Maiolo
 
-This project was created by David Maiolo on March 30, 2023. For any inquiries or issues related to the project, 
-you can contact me through my GitHub profile or the repository's issue tracker.
+For any inquiries or issues related to the project, you can contact me through my GitHub profile or the repository's issue tracker.
 
 # Mars Terrain Analysis
 
@@ -13,9 +12,11 @@ This project is designed to analyze the terrain of Mars by processing images and
 
 The project consists of the following files:
 
-1. `main.py` - The main script that preprocesses the images, loads the dataset, trains the CNN model, and validates the model's performance.
+1. `main.py` - The main script that preprocesses the images, loads the dataset, trains the CNN model, and validates the model's performance. It has been updated to provide more console output and a friendlier user experience.
 2. `model.py` - Contains the `create_model` function that defines the architecture of the CNN model.
-3. `utils.py` - Contains utility functions for loading and preprocessing image data.
+3. `utils.py` - Contains utility functions for loading and preprocessing image data. The `display_processed_image_and_masks()` function has been updated to accept an additional `title` parameter, which provides more informative titles for the displayed figures.
+4. `data_loader.py` - A new module that contains functions for loading and splitting the dataset into training and validation sets.
+5. `config.py` - A new module that contains project-wide configurations, such as image width and height.
 
 ## Dataset
 
@@ -25,7 +26,7 @@ of a Martian terrain, while the mask is a binary image highlighting the geologic
 - Images: NLA_397586934EDR_F0010008AUT_04096M1.JPG, ...
 - Masks: NLA_397586934EDR_F0010008AUT_04096M1.png, ...
 
-The dataset is divided into training and validation sets using an 80-20 split.
+The dataset is divided into training and validation sets using an 80-20 split, handled by the `get_data_generators()` function in `data_loader.py`.
 
 ## Using the RGB Key
 

@@ -15,9 +15,10 @@ import numpy as np
 from skimage import io
 from tensorflow.keras.utils import to_categorical
 from sklearn.model_selection import train_test_split
+from config import IMAGE_WIDTH, IMAGE_HEIGHT
 
-IMG_WIDTH = 260
-IMG_HEIGHT = 260
+IMG_WIDTH = IMAGE_WIDTH
+IMG_HEIGHT = IMAGE_HEIGHT
 
 import matplotlib.pyplot as plt
 
@@ -32,6 +33,8 @@ def load_images_and_masks(image_folder, mask_folder, img_height, img_width):
     mask_files = [f for f in mask_files if f[:-3] + "JPG" in image_files]
 
     for img_file, mask_file in zip(image_files, mask_files):
+        if img_file[:-3] != mask_file[:-3]:  # Ensure the filenames match, except for the extensions
+            continue
 
         img = cv2.imread(os.path.join(image_folder, img_file), cv2.IMREAD_GRAYSCALE)
         mask = cv2.imread(os.path.join(mask_folder, mask_file), cv2.IMREAD_GRAYSCALE)
@@ -50,7 +53,7 @@ def load_images_and_masks(image_folder, mask_folder, img_height, img_width):
         images.append(img)
         masks.append(mask)
 
-        print(f"Processed: {img_file} with mask {mask_file}")
+        #print(f"Processed: {img_file} with mask {mask_file}")
 
     images = np.array(images, dtype=np.float32) / 255.0
     masks = np.array(masks, dtype=np.float32) / 255.0
@@ -74,29 +77,16 @@ def get_data_generators(data_dir, images_dir, masks_dir):
     images, masks = load_images_and_masks(image_folder, mask_folder, IMG_HEIGHT, IMG_WIDTH)
     print(f"Loaded {len(images)} images and {len(masks)} masks")
 
-    # Display a side-by-side comparison of the images and masks
-    num_images = len(images)
-    fig, ax = plt.subplots(num_images, 2, figsize=(10, 20))
-
-    for i in range(num_images):
-        ax[i][0].imshow(cv2.cvtColor(images[i], cv2.COLOR_BGR2RGB))
-        #ax[i][0].imshow(images[i])
-        ax[i][0].set_title("Image")
-        ax[i][1].imshow(masks[i], cmap='gray')
-        ax[i][1].set_title("Mask")
-
-    plt.show()
-
     # Preprocess images and masks
     images, masks = preprocess_data(images, masks)
     print(f"Preprocessed {len(images)} images and {len(masks)} masks")
 
     # Split data into train and validation sets
     x_train, x_val, y_train, y_val = train_test_split(images, masks, test_size=0.2, random_state=42)
-    print(f"x_train shape: {x_train.shape}")
-    print(f"x_val shape: {x_val.shape}")
-    print(f"y_train size: {len(y_train)}")
-    print(f"y_val size: {len(y_val)}")
+    #print(f"x_train shape: {x_train.shape}")
+    #print(f"x_val shape: {x_val.shape}")
+    #print(f"y_train size: {len(y_train)}")
+    #print(f"y_val size: {len(y_val)}")
 
     # Convert y_train and y_val to NumPy arrays
     y_train = np.array(y_train)

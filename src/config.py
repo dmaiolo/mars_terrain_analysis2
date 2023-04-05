@@ -1,0 +1,4 @@
+# config.py
+
+IMAGE_WIDTH = 260
+IMAGE_HEIGHT = 260
